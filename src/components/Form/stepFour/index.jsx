@@ -47,10 +47,10 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
         }
 
         try {
-          const response = await axios.post('http://localhost:5174/send-email', formData, {
+          const response = await axios.post('https://sendform-comind.onrender.com/send-email', formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
-              'Access-Control-Allow-Origin': 'http://forms.bandas-mangueras-conexiones-industriales.com/',
+              'Access-Control-Allow-Origin': 'https://sendform-comind.onrender.com/',
             }
           });
           console.log(response.data);
