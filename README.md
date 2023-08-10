@@ -1,8 +1,13 @@
-# React + Vite
+# Este es un formulario para envio de pedidos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta hecho con react + vite y realiza envios de correo a  travez de un servidor de nodejs  que  usa express y nodemailer desplegado en render.
 
-Currently, two official plugins are available:
+Instalar dependencias:
+npm install
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Visualisar en localhost:
+ npm run dev
+ 
+Hacer build para subir a un dominio:
+ npm run build
+
