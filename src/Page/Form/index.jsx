@@ -64,7 +64,7 @@ function Form() {
             flexDirection: "column",
             color: "white",
             alignItems: "center",
-            marginBottom: "50px",
+            marginBottom: "20px",
             "@media (max-width: 730px)": {
               marginBottom: "10px",
             },
@@ -147,10 +147,10 @@ function Form() {
         {currentStep == 5 && (
           <Redirect
             message={
-              "Gracias por enviar su solicitud, lo atenderemos  en breve"
+              "Gracias por enviar su solicitud, lo atenderemos en breve"
             }
             tempRedirect={3000}
-            url={"https://comimsa.net"}
+            url={"https://landing.bandas-mangueras-conexiones-industriales.com/"}
           />
         )}
       </Box>

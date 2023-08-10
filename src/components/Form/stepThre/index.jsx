@@ -117,7 +117,7 @@ function FormStepThre({ data, setData, dispatch, mockSteps }) {
             textAlign:'center'
           } }}
           variant="h4">
-            ¿Qué econexiones requieres en el ensamble?
+            ¿Qué conexiones requieres en el ensamble?
           </Typography>
         </Box>
 
@@ -144,6 +144,7 @@ function FormStepThre({ data, setData, dispatch, mockSteps }) {
                 <FormControl
                 fullWidth>
                   <TextField
+                  required
                    value={data.description}
                    onChange={(e) => setData({...data, description:e.target.value})}
                   label="Ingresa los modelos / describe las conexiones"

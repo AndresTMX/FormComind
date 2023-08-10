@@ -130,7 +130,7 @@ function FormStepOne({data, setData, dispatch, mockSteps}) {
 
             {data.type != null && (
               <FormControl>
-                <InputLabel>Selecciona segun el proposito</InputLabel>
+                <InputLabel>Selecciona según el proposito</InputLabel>
                 <Select 
                 onChange={(e) => setData({...data, proposed: e.target.value})}
                 required

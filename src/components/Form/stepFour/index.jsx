@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Box, Button, FormControl, Typography, InputLabel, Paper, Slide, TextField } from "@mui/material";
+import { Container, Box, Button, FormControl, Typography, InputLabel, Paper, Slide, TextField, Select, MenuItem } from "@mui/material";
 import { actionTypes } from "../../../reducers/reduce.form";
 import axios from "axios";
 
@@ -25,12 +25,47 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
 
         }, 500);
     };
+
+    const statesMexico = [
+      "Aguascalientes",
+      "Baja California",
+      "Baja California Sur",
+      "Campeche",
+      "Chiapas",
+      "Chihuahua",
+      "Coahuila",
+      "Colima",
+      "Durango",
+      "Guanajuato",
+      "Guerrero",
+      "Hidalgo",
+      "Jalisco",
+      "México",
+      "Michoacán",
+      "Morelos",
+      "Nayarit",
+      "Nuevo León",
+      "Oaxaca",
+      "Puebla",
+      "Querétaro",
+      "Quintana Roo",
+      "San Luis Potosí",
+      "Sinaloa",
+      "Sonora",
+      "Tabasco",
+      "Tamaulipas",
+      "Tlaxcala",
+      "Veracruz",
+      "Yucatán",
+      "Zacatecas",
+    ];
     
     const nextView = async (e) => {
         e.preventDefault();
-        setTimeout(() => {
 
-            console.log('enviando...')
+        console.log(data)
+
+        setTimeout(() => {
 
             dispatch({ type: actionTypes.setStep, payload: 5 });
     
@@ -169,6 +204,7 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
 
                 <FormControl fullWidth>
                   <TextField
+                    type="email"
                     required
                     value={data.email}
                     onChange={(e) =>
@@ -184,6 +220,48 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
               <Box
                 sx={{ display: "flex", gap: "10px", flexDirection: "row" }}
               >
+
+                
+                <FormControl fullWidth>
+                <InputLabel>País</InputLabel>
+                  <Select
+                  required
+                  value={data.country}
+                  onChange={(e) =>
+                    setData({ ...data, country: e.target.value })
+                  }
+                  label="País"
+                  variant="outlined"
+                  >
+                    <MenuItem value="México">México</MenuItem>
+                    <MenuItem value="Otros">Otros</MenuItem>
+                  </Select>
+                </FormControl>
+
+                <FormControl fullWidth>
+                <InputLabel>Estado</InputLabel>
+                  <Select
+                    MenuProps={{
+                      PaperProps: {
+                        style: {
+                          maxHeight: 200,
+                        },
+                      },
+                    }}
+                  required
+                  value={data.state}
+                  onChange={(e) =>
+                    setData({ ...data, state: e.target.value })
+                  }
+                  label="Estado"
+                  variant="outlined"
+                  >
+                    {statesMexico.map((item) => (
+                      <MenuItem key={item} value={item} >{item}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
                 <FormControl fullWidth>
                   <TextField
                     required
@@ -192,30 +270,6 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
                       setData({ ...data, city: e.target.value })
                     }
                     label="Ciudad"
-                    variant="outlined"
-                  />
-                </FormControl>
-
-                <FormControl fullWidth>
-                  <TextField
-                    required
-                    value={data.state}
-                    onChange={(e) =>
-                      setData({ ...data, state: e.target.value })
-                    }
-                    label="Estado"
-                    variant="outlined"
-                  />
-                </FormControl>
-
-                <FormControl fullWidth>
-                  <TextField
-                    required
-                    value={data.country}
-                    onChange={(e) =>
-                      setData({ ...data, country: e.target.value })
-                    }
-                    label="Pais"
                     variant="outlined"
                   />
                 </FormControl>

@@ -10,9 +10,9 @@ function UI({children}) {
         sx={{
             background:'radial-gradient(circle, rgba(17,64,116,1) 0%, rgba(10,37,66,1) 85%)',
             width: '100%',
-            height: '130vh',
+            height: 'auto',
+            minHeight:'100vh',
             '@media (max-width: 730px)':{
-            height: '150vh',
             paddingTop:'20px',
             paddingBottom:'20px',
             }

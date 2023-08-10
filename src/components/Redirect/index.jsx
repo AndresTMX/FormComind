@@ -34,7 +34,7 @@ function Redirect({ message, tempRedirect, url }) {
       </Box>
       <Box>
       <Typography variant="subtitle" fontWeight={500}>
-          Sera redirigido a nuestra pagina principal en 3 segundos
+          Será redirigido a nuestra página principal en 3 segundos
         </Typography>
       </Box>
     </Container>
