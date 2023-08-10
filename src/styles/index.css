@@ -1,0 +1,24 @@
+.counterStep_step {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    width:auto;
+    align-items: center;
+    font-weight: 500;
+}
+
+.counterStep_step_responsive {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    width:auto;
+    align-items: center;
+    font-weight: 500;
+    @media (max-width: 730px) {
+        display:none
+    }
+}
+
+.active{
+    font-weight:600;
+}
