@@ -115,7 +115,7 @@ function FormStepOne({data, setData, dispatch, mockSteps}) {
             '@media (max-width: 730px)':{
             fontSize:'1.2rem'
           } }} >
-            ¿Qué tipo de manguera?
+            El servicio que requieres es
           </Typography>
         </Box>
 
@@ -145,7 +145,7 @@ function FormStepOne({data, setData, dispatch, mockSteps}) {
               >
                 <MenuItem value="industrial">Industrial</MenuItem>
                 <MenuItem value="hidraulica">Hidráulica</MenuItem>
-                <MenuItem value="Metalica">Metalica</MenuItem>
+                <MenuItem value="Metalica">Metálica</MenuItem>
                 <MenuItem value="Autotanques y Tolvas">Autotanques y Tolvas</MenuItem>
 
               </Select>

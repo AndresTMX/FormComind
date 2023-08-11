@@ -2,7 +2,7 @@
 const initialState = {
     currentStep:1,
     stepOne:{
-        step: "Manguera",
+        step: "Servicio",
         num: "1",
         current: true,
     },

@@ -141,7 +141,7 @@ function FormStepThre({ data, setData, dispatch, mockSteps }) {
             textAlign:'center'
           } }}
           variant="h4">
-            ¿Qué conexiones requieres en el ensamble?
+            ¿Cuál es el tipo de conexión que requieres?
           </Typography>
         </Box>
 
