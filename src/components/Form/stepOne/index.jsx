@@ -26,19 +26,39 @@ function FormStepOne({data, setData, dispatch, mockSteps}) {
     const updateData = (e) => {
         e.preventDefault();
 
-        setView(false)
-        setTimeout(() => {
-          dispatch({ type: actionTypes.setStep, payload: 2 });
-          dispatch({
-            type: actionTypes.setOne,
-            payload: { ...mockSteps[0], current: false },
-          });
-          dispatch({
-            type: actionTypes.setTwo,
-            payload: { ...mockSteps[1], current: true },
-          });
+        if(data.type != "Autotanques y Tolvas"){
+
+          setView(false)
+          setTimeout(() => {
+            dispatch({ type: actionTypes.setStep, payload: 2 });
+            dispatch({
+              type: actionTypes.setOne,
+              payload: { ...mockSteps[0], current: false },
+            });
+            dispatch({
+              type: actionTypes.setTwo,
+              payload: { ...mockSteps[1], current: true },
+            });
+            
+          },500)  
           
-        },500)
+        }else{
+
+          setView(false)
+          setTimeout(() => {
+            dispatch({ type: actionTypes.setStep, payload: 3 });
+            dispatch({
+              type: actionTypes.setOne,
+              payload: { ...mockSteps[0], current: false },
+            });
+            dispatch({
+              type: actionTypes.setThre,
+              payload: { ...mockSteps[2], current: true },
+            });
+            
+          },500)  
+
+        }
 
     }
 
@@ -125,33 +145,11 @@ function FormStepOne({data, setData, dispatch, mockSteps}) {
               >
                 <MenuItem value="industrial">Industrial</MenuItem>
                 <MenuItem value="hidraulica">Hidráulica</MenuItem>
+                <MenuItem value="Metalica">Metalica</MenuItem>
+                <MenuItem value="Autotanques y Tolvas">Autotanques y Tolvas</MenuItem>
+
               </Select>
             </FormControl>
-
-            {data.type != null && (
-              <FormControl>
-                <InputLabel>Selecciona según el proposito</InputLabel>
-                <Select 
-                onChange={(e) => setData({...data, proposed: e.target.value})}
-                required
-                value={data.proposed}
-                label="Selecciona la opción más adecuada">
-                  {data.type === "industrial" &&
-                    industrialOptions.map((option) => (
-                      <MenuItem key={option.type} value={option.type}>
-                        {option.type}
-                      </MenuItem>
-                    ))}
-
-                  {data.type === "hidraulica" &&
-                    hidrulicaptions.map((option) => (
-                      <MenuItem key={option.type} value={option.type}>
-                        {option.type}
-                      </MenuItem>
-                    ))}
-                </Select>
-              </FormControl>
-            )}
 
             <Button type="submit" variant="contained">
               Siguiente

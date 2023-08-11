@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Box, Button, Select, MenuItem, FormControl, Typography, InputLabel, Paper, Slide, InputBase, TextField, InputAdornment, IconButton, OutlinedInput } from "@mui/material";
+import { Container, Box, Button, Select, MenuItem, FormControl, Typography, InputLabel, Paper, Slide, InputBase, TextField, InputAdornment, IconButton, OutlinedInput, FormHelperText } from "@mui/material";
 import {TbTemperatureCelsius, TbTemperatureFahrenheit} from 'react-icons/tb'
 import { actionTypes } from "../../../reducers/reduce.form";
 
@@ -135,11 +135,13 @@ function FormStepTwo({data, setData, dispatch, mockSteps}) {
               }}
             >
               <Box
-                sx={{ display: "flex", gap: "10px", flexDirection: "column" }}
+                sx={{ display: "flex", gap: "15px", flexDirection: "column" }}
               >
                 <FormControl fullWidth>
                   <TextField
                     required
+                    error={data.typeFluid === ""}
+                    helperText={data.typeFluid === ""? "Requerido*": ""}
                     label="Tipo de fluido a conducir"
                     variant="outlined"
                     value={data.typeFluid}
@@ -149,12 +151,14 @@ function FormStepTwo({data, setData, dispatch, mockSteps}) {
 
                 <FormControl fullWidth>
                   <InputLabel
-                   sx={{'@media (max-width: 730px)':{
+                    error={data.temp === ""}
+                    sx={{'@media (max-width: 730px)':{
                     fontSize:'15px',
                     }}}>
                       Temperatura</InputLabel>
                   <OutlinedInput
                     required
+                    error={data.temp === ""}
                     label="Temperatura"
                     value={data.temp}
                     onChange={(e) => setData({...data, temp: e.target.value})}
@@ -175,11 +179,14 @@ function FormStepTwo({data, setData, dispatch, mockSteps}) {
                       </InputAdornment>
                     }
                   />
+                    {data.temp === "" && (<FormHelperText error >Requerido*</FormHelperText>)}
                 </FormControl>
 
                 <FormControl fullWidth>
                   <TextField
-                    required 
+                  error={data.pressure === ''}
+                  required 
+                  helperText={data.pressure === ""? "Requerido*": ""}
                   value={data.pressure}
                   onChange={(e) => setData({...data, pressure:e.target.value})}
                   label="Presión en PSI"
@@ -188,11 +195,13 @@ function FormStepTwo({data, setData, dispatch, mockSteps}) {
               </Box>
 
               <Box
-                sx={{ display: "flex", gap: "10px", flexDirection: "column" }}
+                sx={{ display: "flex", gap: "15px", flexDirection: "column" }}
               >
                 <FormControl fullWidth>
                   <TextField
-                    required 
+                    error={data.length === ''}
+                    required
+                    helperText={data.length === ""? "Requerido*": ""}
                    value={data.length}
                    onChange={(e) => setData({...data, length:e.target.value})}
                   label="Longitud"
@@ -206,7 +215,6 @@ function FormStepTwo({data, setData, dispatch, mockSteps}) {
                       }}}>
                       Diametro interior</InputLabel>
                   <OutlinedInput
-                    required 
                    value={data.diameterInt}
                    onChange={(e) => setData({...data, diameterInt:e.target.value})}
                   label="Diametro interior"
@@ -220,7 +228,6 @@ function FormStepTwo({data, setData, dispatch, mockSteps}) {
                    }}}>
                     Diametro exterior</InputLabel>
                   <OutlinedInput
-                    required 
                    value={data.diameterExt}
                    onChange={(e) => setData({...data, diameterExt:e.target.value})}
                   label="Diametro exterior" 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Box, Button, FormControl, Typography, InputLabel, Paper, Slide, TextField, Select, MenuItem, CircularProgress, Stack, Modal } from "@mui/material";
+import { Container, Box, Button, FormControl, Typography, InputLabel, Paper, Slide, TextField, Select, MenuItem, CircularProgress, Stack, Modal, FormHelperText } from "@mui/material";
 import { actionTypes } from "../../../reducers/reduce.form";
 import axios from "axios";
 
@@ -193,6 +193,8 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
                 <FormControl fullWidth>
                   <TextField
                     required
+                    error={data.name === ""}
+                    helperText={data.name === ""? "Requerido*": ""}
                     value={data.name}
                     onChange={(e) => setData({ ...data, name: e.target.value })}
                     label="Nombre completo"
@@ -203,6 +205,8 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
                 <FormControl fullWidth>
                   <TextField
                     required
+                    error={data.cell === ""}
+                    helperText={data.cell === ""? "Requerido*": ""}
                     value={data.cell}
                     onChange={(e) => setData({ ...data, cell: e.target.value })}
                     label="Telefono"
@@ -212,8 +216,10 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
 
                 <FormControl fullWidth>
                   <TextField
-                    type="email"
                     required
+                    error={data.email === ""}
+                    helperText={data.email === ""? "Requerido*": ""}
+                    type="email"
                     value={data.email}
                     onChange={(e) =>
                       setData({ ...data, email: e.target.value })
@@ -231,7 +237,9 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
                   flexDirection: "row",
                 }}
               >
-                <FormControl fullWidth>
+                <FormControl 
+                error={data.country === ""}
+                fullWidth>
                   <InputLabel>País</InputLabel>
                   <Select
                     required
@@ -245,11 +253,17 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
                     <MenuItem value="México">México</MenuItem>
                     <MenuItem value="Otros">Otros</MenuItem>
                   </Select>
+                  {data.country === "" && (<FormHelperText>Requerido*</FormHelperText>)}
                 </FormControl>
 
-                <FormControl fullWidth>
-                  <InputLabel>Estado</InputLabel>
-                  <Select
+                <FormControl 
+                fullWidth
+                error={data.state === ""}
+                >
+                  {data.country === "México" && (
+                    <>
+                     <InputLabel>Estado</InputLabel>
+                    <Select
                     MenuProps={{
                       PaperProps: {
                         style: {
@@ -271,11 +285,29 @@ function FormStepFour({data, setData, dispatch, mockSteps}) {
                       </MenuItem>
                     ))}
                   </Select>
+                  {data.state === "" && (<FormHelperText>Requerido*</FormHelperText>)}
+                    </> )
+                  }
+
+                  {data.country != "México" && (
+                     <TextField
+                     required
+                     error={data.state ===""}
+                     value={data.state}
+                     label="Estado"
+                     helperText={data.state === ""? "Requerido*": ""}
+                     onChange={(e) => setData({ ...data, state: e.target.value })}
+                     variant="outlined"
+                   />
+                  )}
                 </FormControl>
 
-                <FormControl fullWidth>
+                <FormControl 
+                fullWidth>
                   <TextField
                     required
+                    error={data.city === ""}
+                    helperText={data.city === ""? "Requerido*": ""}
                     value={data.city}
                     onChange={(e) => setData({ ...data, city: e.target.value })}
                     label="Ciudad"

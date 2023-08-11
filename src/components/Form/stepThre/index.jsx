@@ -28,7 +28,10 @@ function FormStepThre({ data, setData, dispatch, mockSteps }) {
   };
 
   const preview = () => {
-    setView(false);
+
+    if(data.type != "Autotanques y Tolvas"){
+
+      setView(false);
     setTimeout(() => {
       dispatch({ type: actionTypes.setStep, payload: 2 });
       
@@ -42,6 +45,27 @@ function FormStepThre({ data, setData, dispatch, mockSteps }) {
         payload: { ...mockSteps[2], current: false },
       });
     }, 500);
+
+    }else{
+      
+      setView(false);
+      setTimeout(() => {
+        dispatch({ type: actionTypes.setStep, payload: 1 });
+        
+        dispatch({
+          type: actionTypes.setOne,
+          payload: { ...mockSteps[0], current: true },
+        });
+  
+        dispatch({
+          type: actionTypes.setThre,
+          payload: { ...mockSteps[2], current: false },
+        });
+      }, 500);
+
+    }
+
+   
   };
 
   const nextView = (e) => {
@@ -145,8 +169,10 @@ function FormStepThre({ data, setData, dispatch, mockSteps }) {
                 fullWidth>
                   <TextField
                   required
-                   value={data.description}
-                   onChange={(e) => setData({...data, description:e.target.value})}
+                  error={data.description === ""}
+                  helperText={data.description === ""? "Requerido*": ""}
+                  value={data.description}
+                  onChange={(e) => setData({...data, description:e.target.value})}
                   label="Ingresa los modelos / describe las conexiones"
                   multiline
                   rows={8}

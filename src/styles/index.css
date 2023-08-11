@@ -14,7 +14,7 @@
     width:auto;
     align-items: center;
     font-weight: 500;
-    @media (max-width: 730px) {
+    @media (max-width: 740px) {
         display:none
     }
 }
